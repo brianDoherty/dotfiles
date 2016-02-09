@@ -1,5 +1,36 @@
-" Pathogen for plugins 
-execute pathogen#infect()
+set nocompatible
+filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'bling/vim-airline'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'edkolev/promptline.vim'
+Plugin 'ervandew/supertab'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mhinz/vim-startify'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'pangloss/vim-javascript'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
+
+call vundle#end()
+filetype plugin indent on
+
+" Gotta break the habit
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Searching
 set ignorecase
@@ -8,24 +39,34 @@ set incsearch
 
 let mapleader = "\<Space>"
 
+" Tmux navigator
+nnoremap <silent> <Leader>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <Leader>j :TmuxNavigateDown<cr>
+nnoremap <silent> <Leader>k :TmuxNavigateUp<cr>
+nnoremap <silent> <Leader>l :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>wqa :wqa<CR>
-nnoremap <Leader>vs :vsp
+nnoremap <Leader>vs :vsp 
 nnoremap <Leader>p :CtrlP<CR>
-nnoremap <Leader>cc :CoffeeCompile<CR>
+nnoremap <Leader>coffee :CoffeeCompile<CR>
 nnoremap <Leader>jj :NERDTreeToggle<CR>
-nnoremap <Leader>nn :set invnumber<CR>
+nnoremap <Leader>nn :set invnumber<CR> 
 " Remove highlight on searched words
-nnoremap <Leader>l :nohl<CR>:set nospell<CR>
+nnoremap <Leader>c :nohl<CR>:set nospell<CR>
 " Open command window to autocomplete a search
 nnoremap <Leader>f /<C-F>i
+nnoremap <Leader>ff :Ag 
 
-nnoremap <Leader><Up> <C-W><Up>
-nnoremap <Leader><Down> <C-W><Down>
-nnoremap <Leader><Left> <C-W><Left>
-nnoremap <Leader><Right> <C-W><Right>
+nnoremap <Leader>k <C-W>k
+nnoremap <Leader>j <C-W>j
+nnoremap <Leader>h <C-W>h
+nnoremap <Leader>l <C-W>l
+
+nnoremap <Leader>b :!jq .<CR>
 
 nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
 
@@ -54,10 +95,10 @@ autocmd BufWinLeave * call clearmatches()
 " Dash
 map <C-d> :Dash
 
-autocmd FileType coffee
+autocmd FileType coffee 
   \ setlocal shiftwidth=2 |
   \ setlocal tabstop=2
-autocmd FileType js
+autocmd FileType js 
   \ setlocal shiftwidth=2 |
   \ setlocal tabstop=2
 
@@ -99,6 +140,9 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " Control + L + P Config
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
+" Ag configuration
+let g:ag_working_path_mode="r"
+
 " Run a command and restore search and cursor position.
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
@@ -124,3 +168,12 @@ let g:airline_powerline_fonts = 1
 
 " Fix performance issues with highlighting
 autocmd BufWinLeave * call clearmatches()
+
+" Startify config
+let g:startify_custom_header =
+      \ map(split(system('fortune | cowsay -f ghostbusters'), '\n'), '"   ". v:val') + ['','']
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
