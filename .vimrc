@@ -172,8 +172,3 @@ autocmd BufWinLeave * call clearmatches()
 " Startify config
 let g:startify_custom_header =
       \ map(split(system('fortune | cowsay -f ghostbusters'), '\n'), '"   ". v:val') + ['','']
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
