@@ -92,9 +92,6 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Dash
-map <C-d> :Dash
-
 autocmd FileType coffee 
   \ setlocal shiftwidth=2 |
   \ setlocal tabstop=2
@@ -172,3 +169,6 @@ autocmd BufWinLeave * call clearmatches()
 " Startify config
 let g:startify_custom_header =
       \ map(split(system('fortune | cowsay -f ghostbusters'), '\n'), '"   ". v:val') + ['','']
+
+" Linting
+let g:syntastic_javascript_checkers = ['eslint']

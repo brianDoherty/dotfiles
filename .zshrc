@@ -39,5 +39,14 @@ function work {
 
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
+
+
+export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
+
+# VI Mode stuff
+bindkey '^r' history-incremental-search-backward
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
