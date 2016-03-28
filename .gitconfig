@@ -1,13 +1,12 @@
 [user]
 	name = Brian Doherty
-	email = bdoherty@constantcontact.com
+	email = bdoherty@cainc.com
 [push]
 	default = upstream
 [alias]
     lg = log --graph --all --decorate
     branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
-[core]
-	excludesfile = /opt/boxen/config/git/gitignore
+
 [filter "media"]
 	required = true
 	clean = git media clean %f
@@ -16,8 +15,6 @@
 [hub]
 protocol = https
 
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
