@@ -18,6 +18,10 @@ export JIRA_NAME=bdoherty
 vimdiff_urls() { vimdiff <(curl -s ${1}) <(curl -s ${2}) }
 alias vdu=vimdiff_urls
 
+function t {
+    tree -C --prune --ignore-case  -I "*node_modules*|*jspm_packages*|*reports*" -P "*$1*"
+}
+
 function work {
     tmuxifier w $1;
 }
