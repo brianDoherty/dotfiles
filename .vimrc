@@ -52,16 +52,16 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>wqa :wqa<CR>
-nnoremap <Leader>vs :vsp 
+nnoremap <Leader>vs :vsp
 nnoremap <Leader>p :CtrlP<CR>
 nnoremap <Leader>coffee :CoffeeCompile<CR>
 nnoremap <Leader>jj :NERDTreeToggle<CR>
-nnoremap <Leader>nn :set invnumber<CR> 
+nnoremap <Leader>nn :set invnumber<CR>
 " Remove highlight on searched words
 nnoremap <Leader>c :nohl<CR>:set nospell<CR>
 " Open command window to autocomplete a search
 nnoremap <Leader>f /<C-F>i
-nnoremap <Leader>ff :Ag 
+nnoremap <Leader>ff :Ag
 
 nnoremap <Leader>k <C-W>k
 nnoremap <Leader>j <C-W>j
@@ -94,10 +94,13 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-autocmd FileType coffee 
+autocmd FileType coffee
   \ setlocal shiftwidth=2 |
   \ setlocal tabstop=2
-autocmd FileType js 
+autocmd FileType js
+  \ setlocal shiftwidth=2 |
+  \ setlocal tabstop=2
+autocmd FileType json
   \ setlocal shiftwidth=2 |
   \ setlocal tabstop=2
 

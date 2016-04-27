@@ -10,6 +10,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/usr/local/bin:$PATH
 export TERM='xterm-256color'
+export EDITOR=/usr/local/bin/vim
 
 export JIRA_URL=https://jira.roving.com
 export JIRA_NAME=bdoherty
@@ -20,6 +21,10 @@ alias vdu=vimdiff_urls
 
 function t {
     tree -C --prune --ignore-case  -I "*node_modules*|*jspm_packages*|*reports*" -P "*$1*"
+}
+
+function root {
+    git rev-parse && cd "$(git rev-parse --show-cdup)";
 }
 
 function work {
