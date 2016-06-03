@@ -12,8 +12,9 @@ export PATH=/usr/local/bin:$PATH
 export TERM='xterm-256color'
 export EDITOR=/usr/local/bin/vim
 
-export JIRA_URL=https://jira.roving.com
+export JIRA_URL=https://jira.cainc.com
 export JIRA_NAME=bdoherty
+export JIRA_DEFAULT_ACTION=dashboard
 
 # Diff two urls
 vimdiff_urls() { vimdiff <(curl -s ${1}) <(curl -s ${2}) }
@@ -29,6 +30,10 @@ function root {
 
 function work {
     tmuxifier w $1;
+}
+
+function j {
+    jira $(git rev-parse --abbrev-ref HEAD);
 }
 
 export PATH="$HOME/.nodenv/bin:$PATH"

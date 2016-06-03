@@ -8,6 +8,7 @@ Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'edkolev/promptline.vim'
+Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'kchmck/vim-coffee-script'
@@ -19,7 +20,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic' " Install this https://github.com/mysticatea/eslint-cli to make eslint use the local project eslintrc / binary
 Plugin 'tommcdo/vim-fubitive'
 Plugin 'tpope/vim-fugitive'
 Plugin 'xolox/vim-misc'
@@ -71,6 +72,8 @@ nnoremap <Leader>l <C-W>l
 nnoremap <Leader>b :!jq .<CR>
 
 nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
+" Easier folding
+nnoremap zz za
 
 " Coffee Script Configuration
 autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
@@ -177,3 +180,21 @@ let g:startify_custom_header =
 
 " Linting
 let g:syntastic_javascript_checkers = ['eslint']
+
+" jsdoc plugin configuration
+let g:jsdoc_underscore_private = 1
+let g:jsdoc_enabled_es6 = 1
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description = 1
+nmap <silent> <Leader>d <Plug>(jsdoc)
+
+" JSON plugin
+let g:vim_json_syntax_conceal = 0
+
+" Folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+
+:set wildmenu
