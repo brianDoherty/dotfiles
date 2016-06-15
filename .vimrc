@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'edkolev/promptline.vim'
@@ -169,7 +170,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=8
 
 " airline config
 set laststatus=2
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " Fix performance issues with highlighting
 autocmd BufWinLeave * call clearmatches()
@@ -198,3 +199,15 @@ set nofoldenable
 set foldlevel=1
 
 :set wildmenu
+
+hi! DiffAdd      guibg=#003300
+hi! DiffChange   guibg=#003300
+hi! DiffDelete   guifg=#330000 guibg=#330000
+hi! DiffText     guibg=#990000
+hi Search ctermbg=yellow ctermfg=black
+" Selected tabs
+hi TabLineSel   ctermfg=White  ctermbg=239  cterm=NONE
+" Unselected tabs
+hi TabLine   ctermfg=247  ctermbg=235  cterm=NONE
+" Bar Color
+hi TabLineFill  ctermfg=Black  ctermbg=233     cterm=NONE
