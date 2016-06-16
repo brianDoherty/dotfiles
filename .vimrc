@@ -40,6 +40,9 @@ noremap <Right> <NOP>
 set ignorecase
 set smartcase
 set incsearch
+" Type "//" after visually selecting text to search the rest of the buffer for
+" it
+vnoremap // y/<C-R>"<CR>
 
 let mapleader = "\<Space>"
 
@@ -200,14 +203,14 @@ set foldlevel=1
 
 :set wildmenu
 
-hi! DiffAdd      guibg=#003300
-hi! DiffChange   guibg=#003300
-hi! DiffDelete   guifg=#330000 guibg=#330000
-hi! DiffText     guibg=#990000
+" Colors
+hi DiffAdd      ctermbg=28 ctermfg=15
+hi DiffDelete   ctermbg=9 ctermfg=15
+hi DiffChange   ctermbg=237 ctermfg=15
+hi DiffText     ctermbg=68 ctermfg=15
+
 hi Search ctermbg=yellow ctermfg=black
-" Selected tabs
 hi TabLineSel   ctermfg=White  ctermbg=239  cterm=NONE
-" Unselected tabs
 hi TabLine   ctermfg=247  ctermbg=235  cterm=NONE
-" Bar Color
 hi TabLineFill  ctermfg=Black  ctermbg=233     cterm=NONE
+hi SignColumn ctermbg=233
