@@ -46,5 +46,14 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
+# NVM Stuff
 export NVM_DIR="/Users/bdoherty/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+# fzf stuff
+export FZF_DEFAULT_COMMAND='ag -g ""'
+_fzf_compgen_path() {
+  ag -g "" "$1"
+}
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

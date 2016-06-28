@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'Chun-Yang/vim-action-ag'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'elzr/vim-json'
@@ -43,6 +44,10 @@ set incsearch
 " Type "//" after visually selecting text to search the rest of the buffer for
 " it
 vnoremap // y/<C-R>"<CR>
+" use * to search selected text in visual mode
+vmap * <Plug>AgActionVisual
+" use * to search current word in normal mode
+nmap * <Plug>AgActionWord
 
 let mapleader = "\<Space>"
 
@@ -67,6 +72,7 @@ nnoremap <Leader>c :nohl<CR>:set nospell<CR>
 " Open command window to autocomplete a search
 nnoremap <Leader>f /<C-F>i
 nnoremap <Leader>ff :Ag
+nnoremap <Leader>jf :NERDTreeFind<CR>
 
 nnoremap <Leader>k <C-W>k
 nnoremap <Leader>j <C-W>j
@@ -136,7 +142,7 @@ map gd :Gdiff<CR>
 map gs :Gstatus<CR>
 map gb :Gblame<CR>
 map gh :Gbrowse<CR>
-let g:fugitive_github_domains = ['https://github.roving.com']
+let g:fugitive_github_domains = ['https://github.cainc.com']
 
 " CSS highlighting stuff
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
