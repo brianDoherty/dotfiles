@@ -32,6 +32,10 @@ function work {
     tmuxifier w $1;
 }
 
+function digit {
+    tmuxifier s digit;
+}
+
 function j {
     jira $(git rev-parse --abbrev-ref HEAD);
 }

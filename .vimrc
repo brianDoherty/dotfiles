@@ -12,6 +12,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
+Plugin 'gregsexton/gitv'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
@@ -49,7 +50,11 @@ vmap * <Plug>AgActionVisual
 " use * to search current word in normal mode
 nmap * <Plug>AgActionWord
 
+
 let mapleader = "\<Space>"
+
+" Replace last searched word. Use something like viw//<Leader>r
+map <Leader>r :%s///g<left><left>
 
 " Tmux navigator
 nnoremap <silent> <Leader>h :TmuxNavigateLeft<cr>
@@ -71,7 +76,7 @@ nnoremap <Leader>nn :set invnumber<CR>
 nnoremap <Leader>c :nohl<CR>:set nospell<CR>
 " Open command window to autocomplete a search
 nnoremap <Leader>f /<C-F>i
-nnoremap <Leader>ff :Ag
+nnoremap <Leader>ff :Ag<space>
 nnoremap <Leader>jf :NERDTreeFind<CR>
 
 nnoremap <Leader>k <C-W>k
@@ -82,6 +87,8 @@ nnoremap <Leader>l <C-W>l
 nnoremap <Leader>b :!jq .<CR>
 
 nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
+nnoremap <Leader>ss z=
+
 " Easier folding
 nnoremap zz za
 
@@ -215,6 +222,7 @@ hi DiffDelete   ctermbg=9 ctermfg=15
 hi DiffChange   ctermbg=237 ctermfg=15
 hi DiffText     ctermbg=68 ctermfg=15
 
+hi Visual ctermbg=239 ctermfg=white
 hi Search ctermbg=yellow ctermfg=black
 hi TabLineSel   ctermfg=White  ctermbg=239  cterm=NONE
 hi TabLine   ctermfg=247  ctermbg=235  cterm=NONE
