@@ -96,6 +96,8 @@ nnoremap zz za
 autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
+autocmd BufNewFile,BufReadPost *.jsfl setl shiftwidth=2 expandtab syntax=js
+
 " Syntax highlighting + indentation
 syntax on
 filetype plugin indent on
@@ -145,11 +147,16 @@ highlight ColorColumn ctermbg=255 guibg=#ECECEC
 map <C-j><C-j> :NERDTreeToggle<CR>
 
 " Git Fugitive plugin config
-map gd :Gdiff<CR>
+map gd :Gvdiff<CR>
 map gs :Gstatus<CR>
 map gb :Gblame<CR>
 map gh :Gbrowse<CR>
 let g:fugitive_github_domains = ['https://github.cainc.com']
+" Used to walk through history of file
+map gl :Gllog<CR>:lwindow<CR>
+map gq :Gedit<CR>
+map gn :lnext<CR>
+map gp :lprev<CR>
 
 " CSS highlighting stuff
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
@@ -228,3 +235,5 @@ hi TabLineSel   ctermfg=White  ctermbg=239  cterm=NONE
 hi TabLine   ctermfg=247  ctermbg=235  cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=233     cterm=NONE
 hi SignColumn ctermbg=233
+
+hi notesInProgress ctermfg=yellow
