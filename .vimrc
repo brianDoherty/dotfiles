@@ -4,14 +4,14 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Chun-Yang/vim-action-ag'
+Plugin 'bling/vim-airline'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
+Plugin 'galooshi/vim-import-js' " Must also npm install -g import-js
 Plugin 'gregsexton/gitv'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'kchmck/vim-coffee-script'
@@ -19,11 +19,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'neomake/neomake'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic' " Install this https://github.com/mysticatea/eslint-cli to make eslint use the local project eslintrc / binary
 Plugin 'tommcdo/vim-fubitive'
 Plugin 'tpope/vim-fugitive'
 Plugin 'xolox/vim-misc'
@@ -31,6 +31,21 @@ Plugin 'xolox/vim-notes'
 
 call vundle#end()
 filetype plugin indent on
+
+" Linting
+autocmd! BufWritePost * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+" Always make neomake lint column present even if there are no errors
+augroup mine
+    au BufWinEnter * sign define mysign
+    au BufWinEnter * exe "sign place 1337 line=1 name=mysign buffer=" . bufnr('%')
+augroup END
+let g:neomake_warning_sign = {
+  \ 'text': '>>',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '>>',
+  \ }
 
 " Gotta break the habit
 noremap <Up> <NOP>
@@ -89,6 +104,9 @@ nnoremap <Leader>b :!jq .<CR>
 nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
 nnoremap <Leader>ss z=
 
+nnoremap <Leader>i :ImportJSWord<CR>
+nnoremap <Leader>ii :ImportJSFix<CR>
+
 " Easier folding
 nnoremap zz za
 
@@ -105,8 +123,8 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" Highlight character in 81st column to warn about lines too long
-:2mat ErrorMsg '\%81v.'
+" Highlight character in 121st column to warn about lines too long
+:2mat ErrorMsg '\%121v.'
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -237,3 +255,9 @@ hi TabLineFill  ctermfg=Black  ctermbg=233     cterm=NONE
 hi SignColumn ctermbg=233
 
 hi notesInProgress ctermfg=yellow
+
+hi NeomakeError ctermbg=red ctermfg=white
+hi NeomakeErrorSign ctermbg=red ctermfg=white
+hi NeomakeWarningSign ctermbg=yellow ctermfg=black
+hi NeomakeWarning ctermbg=yellow ctermfg=black
+

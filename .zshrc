@@ -16,6 +16,11 @@ export JIRA_URL=https://jira.cainc.com
 export JIRA_NAME=bdoherty
 export JIRA_DEFAULT_ACTION=dashboard
 
+alias vim=nvim
+# Fix issue with tmux navigator not working with neo vim https://github.com/christoomey/vim-tmux-navigator/issues/61
+infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+tic $TERM.ti
+
 # Diff two urls
 vimdiff_urls() { vimdiff <(curl -s ${1}) <(curl -s ${2}) }
 alias vdu=vimdiff_urls
@@ -34,6 +39,18 @@ function work {
 
 function digit {
     tmuxifier s digit;
+}
+
+function morning {
+    open /Applications/Charles.app;
+    open /Applications/Safari.app;
+    open /Applications/Safari\ Technology\ Preview.app;
+    open /Applications/Google\ Chrome.app;
+    open /Applications/Slack.app;
+    open /Applications/Airmail\ 2.app;
+    open /Applications/OpenVPN/OpenVPN\ Connect.app;
+    open /Applications/Calendar.app;
+    digit;
 }
 
 function j {
