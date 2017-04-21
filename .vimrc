@@ -4,33 +4,46 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+"Plugin 'galooshi/vim-import-js' " Must also npm install -g import-js
 Plugin 'Chun-Yang/vim-action-ag'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
-Plugin 'galooshi/vim-import-js' " Must also npm install -g import-js
 Plugin 'gregsexton/gitv'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'neomake/neomake'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tommcdo/vim-fubitive'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
+Bundle 'wellle/tmux-complete.vim'
+Plugin 'carlitux/deoplete-ternjs'
 
 call vundle#end()
 filetype plugin indent on
+
+" Use Deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" Let <Tab> also do completion
+inoremap <silent> <expr> <Tab> utils#tabComplete()
+
+"===========
 
 " Linting
 autocmd! BufWritePost * Neomake
@@ -211,7 +224,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=8
 
 " airline config
 set laststatus=2
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 " Fix performance issues with highlighting
 autocmd BufWinLeave * call clearmatches()
@@ -229,6 +242,11 @@ let g:jsdoc_enabled_es6 = 1
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_input_description = 1
 nmap <silent> <Leader>d <Plug>(jsdoc)
+
+" Use tern_for_vim.
+let g:tern#command = ["$(npm -g bin)/tern"]
+let g:tern#arguments = ["--persistent"]
+let g:tern_request_timeout = 1
 
 " JSON plugin
 let g:vim_json_syntax_conceal = 0

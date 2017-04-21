@@ -3,9 +3,11 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="sorin"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
-plugins=(git zsh-syntax-highlighting vi-mode jira)
+plugins=(git zsh-syntax-highlighting vi-mode jira web-search)
 
 source $ZSH/oh-my-zsh.sh
+
+source $HOME/.localrc
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/usr/local/bin:$PATH
@@ -42,9 +44,7 @@ function digit {
 }
 
 function morning {
-    open /Applications/Charles.app;
     open /Applications/Safari.app;
-    open /Applications/Safari\ Technology\ Preview.app;
     open /Applications/Google\ Chrome.app;
     open /Applications/Slack.app;
     open /Applications/Airmail\ 2.app;
