@@ -47,7 +47,7 @@ function morning {
     open /Applications/Safari.app;
     open /Applications/Google\ Chrome.app;
     open /Applications/Slack.app;
-    open /Applications/Airmail\ 2.app;
+    open /Applications/Spark.app;
     open /Applications/OpenVPN/OpenVPN\ Connect.app;
     open /Applications/Calendar.app;
     digit;

@@ -28,6 +28,7 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
@@ -48,6 +49,7 @@ inoremap <silent> <expr> <Tab> utils#tabComplete()
 " Linting
 autocmd! BufWritePost * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
 " Always make neomake lint column present even if there are no errors
 augroup mine
     au BufWinEnter * sign define mysign
@@ -133,8 +135,8 @@ autocmd BufNewFile,BufReadPost *.jsfl setl shiftwidth=2 expandtab syntax=js
 syntax on
 filetype plugin indent on
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 " Highlight character in 121st column to warn about lines too long
 :2mat ErrorMsg '\%121v.'
