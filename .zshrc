@@ -18,6 +18,7 @@ export JIRA_URL=https://jira.cainc.com
 export JIRA_NAME=bdoherty
 export JIRA_DEFAULT_ACTION=dashboard
 
+alias ll="exa -l --git"
 alias vim=nvim
 # Fix issue with tmux navigator not working with neo vim https://github.com/christoomey/vim-tmux-navigator/issues/61
 infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
