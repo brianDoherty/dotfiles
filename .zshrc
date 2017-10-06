@@ -79,3 +79,5 @@ _fzf_compgen_path() {
   ag -g "" "$1"
 }
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
