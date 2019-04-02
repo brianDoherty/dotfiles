@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="sorin"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
-plugins=(git zsh-syntax-highlighting vi-mode jira web-search)
+plugins=(git zsh-auto-suggestions zsh-syntax-highlighting vi-mode jira web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -11,7 +11,8 @@ source $HOME/.localrc
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/usr/local/bin:$PATH
-export TERM='xterm-256color'
+# export TERM='xterm-256color'
+export TERM='xterm-256color-italic'
 export EDITOR=/usr/local/bin/vim
 
 export JIRA_URL=https://jira.cainc.com
@@ -28,8 +29,17 @@ tic $TERM.ti
 vimdiff_urls() { vimdiff <(curl -s ${1}) <(curl -s ${2}) }
 alias vdu=vimdiff_urls
 
+function freshstart {
+  root;
+  git clean -fxd;
+  ./scripts/yarn-all.sh;
+  bend generate-tsconfig;
+  cd PageEditorUI;
+  bend reactor serve --update . ../ContentEditorUI ../InpageEditorUI
+}
+
 function t {
-    tree -C --prune --ignore-case  -I "*node_modules*|*jspm_packages*|*reports*" -P "*$1*"
+    tree -a -C --prune --ignore-case  -I "*node_modules*|*jspm_packages*|*reports*" -P "*$1*"
 }
 
 function root {
@@ -40,22 +50,25 @@ function work {
     tmuxifier w $1;
 }
 
-function digit {
-    tmuxifier s digit;
+function hubspot {
+  open "https://local.hubspotqa.com/content/99563647/edit/3234867526/content";
+  tmuxifier s hubspot;
 }
 
 function morning {
-    open /Applications/Safari.app;
     open /Applications/Google\ Chrome.app;
     open /Applications/Slack.app;
     open /Applications/Spark.app;
-    open /Applications/OpenVPN/OpenVPN\ Connect.app;
     open /Applications/Calendar.app;
     digit;
 }
 
 function j {
     jira $(git rev-parse --abbrev-ref HEAD);
+}
+
+function rg {
+  source ~/src/dotfiles/get_right_gif $1
 }
 
 export PATH="$HOME/.nodenv/bin:$PATH"
@@ -81,3 +94,8 @@ _fzf_compgen_path() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Added by nex: https://git.hubteam.com/HubSpot/nex
+. ~/.hubspot/shellrc

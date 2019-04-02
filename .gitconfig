@@ -1,6 +1,6 @@
 [user]
 	name = Brian Doherty
-	email = bdoherty@cainc.com
+	email = bdoherty@hubspot.com
 [push]
 	default = upstream
 [alias]
@@ -25,3 +25,4 @@ protocol = https
 	show = diff-so-fancy | less --tabs=1,5 -RFX
 [core]
 	editor = /usr/local/bin/vim
+	hooksPath = /Users/bdoherty/.git_hooks
