@@ -34,6 +34,7 @@ Plugin 'w0rp/ale'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 Plugin 'neoclide/coc.nvim'
+Plugin 'styled-components/vim-styled-components'
 
 call vundle#end()
 filetype plugin indent on
@@ -137,9 +138,6 @@ nnoremap <Leader>b :!jq .<CR>
 
 nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
 nnoremap <Leader>ss z=
-
-nnoremap <Leader>i :ImportJSWord<CR>
-nnoremap <Leader>ii :ImportJSFix<CR>
 
 noremap ; :ALEFix<cr>
 
@@ -330,7 +328,7 @@ hi ALEWarning guibg=yellow guifg=white
 
 hi Visual guibg=grey guifg=white
 hi Search guibg=limegreen guifg=black
-hi IncSearch guibg=green
+hi IncSearch guibg=green guifg=white
 hi TabLineSel   gui=bold guifg=White  guibg=239
 hi TabLine   guifg=white  guibg=grey
 hi TabLineFill  guifg=Black  guibg=grey
@@ -347,6 +345,7 @@ hi xmlAttrib guifg=green
 hi xmlTagName gui=bold guifg=skyblue
 hi xmlEndTag gui=bold guifg=skyblue
 hi Statement guifg=darkgoldenrod
+hi CursorLine gui=bold guibg=grey guifg=white
 
 syn match   myTodo   contained   "\<\(TODO\|FIXME\):"
 hi def link myTodo Todo
@@ -355,3 +354,5 @@ map <Leader>sh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+
+nmap <silent> gd <Plug>(coc-definition)

@@ -15,7 +15,7 @@ export PATH=/usr/local/bin:$PATH
 export TERM='xterm-256color-italic'
 export EDITOR=/usr/local/bin/vim
 
-export JIRA_URL=https://jira.cainc.com
+export JIRA_URL=https://cainc.com
 export JIRA_NAME=bdoherty
 export JIRA_DEFAULT_ACTION=dashboard
 
@@ -33,9 +33,19 @@ function freshstart {
   root;
   git clean -fxd;
   ./scripts/yarn-all.sh;
-  bend generate-tsconfig;
   cd PageEditorUI;
   bend reactor serve --update . ../ContentEditorUI ../InpageEditorUI
+}
+
+function tsconfig {
+  #root;
+  for dir in ./*UI
+  do
+    cd $dir;
+    echo $dir;
+    bend generate-tsconfig;
+    cd ..;
+  done
 }
 
 function t {
@@ -60,7 +70,7 @@ function morning {
     open /Applications/Slack.app;
     open /Applications/Spark.app;
     open /Applications/Calendar.app;
-    digit;
+    hubspot;
 }
 
 function j {
