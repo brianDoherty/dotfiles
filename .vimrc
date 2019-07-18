@@ -59,6 +59,13 @@ let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['json'] = ['jq']
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 nnoremap <silent> <Leader>e :ALENext<cr>
@@ -261,6 +268,9 @@ let g:indent_guides_start_level = 2
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=7
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=8
 
+" Split new windows to the right
+set splitright
+
 " airline config
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -341,6 +351,7 @@ hi myThis gui=italic guibg=orange guifg=white
 hi String gui=none guifg=red
 hi Special gui=italic guifg=red
 hi jsStorageClass gui=bold guifg=green
+hi jsFuncCall gui=bold guifg=ivory
 hi xmlAttrib guifg=green
 hi xmlTagName gui=bold guifg=skyblue
 hi xmlEndTag gui=bold guifg=skyblue

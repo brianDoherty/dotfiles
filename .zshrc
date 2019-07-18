@@ -77,7 +77,7 @@ function j {
     jira $(git rev-parse --abbrev-ref HEAD);
 }
 
-function rg {
+function gif {
   source ~/src/dotfiles/get_right_gif $1
 }
 
